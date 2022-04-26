@@ -10,7 +10,7 @@ jobs:
       run: |
         pwd
         nuget restore
-        msbuild EnovadeApp/EnovadeApp/EnovadeApp/EnovadeApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug        
+        msbuild /Users/runner/work/EnovadeApp/EnovadeApp/EnovadeApp/EnovadeApp.iOS/EnovadeApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug        
     - uses: actions/upload-artifact@v2
       with:
         name: iOS Simulator App
