@@ -1,0 +1,17 @@
+name: CI on Push and Pull Request
+on: [push, pull_request]
+jobs:
+  iOS:
+    runs-on: macos-latest    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2        
+    - name: iOS Simulator
+      run: |
+        cd Blank
+        nuget restore
+        msbuild EnovadeApp/EnovadeApp.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug        
+    - uses: actions/upload-artifact@v2
+      with:
+        name: iOS Simulator App
+        path: EnovadeApp/EnovadeApp.iOS/bin/iPhoneSimulator/Debug/EnovadeApp.iOS.app        
