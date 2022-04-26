@@ -8,10 +8,10 @@ jobs:
       uses: actions/checkout@v2        
     - name: iOS Simulator
       run: |
-        cd EnovadeApp
+        cd EnovadeApp/EnovadeApp.iOS
         pwd
         nuget restore
-        msbuild EnovadeApp.iOS/EnovadeApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug        
+        msbuild EnovadeApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug        
     - uses: actions/upload-artifact@v2
       with:
         name: iOS Simulator App
