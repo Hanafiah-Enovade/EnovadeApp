@@ -9,6 +9,7 @@ jobs:
     - name: iOS Simulator
       run: |
         cd EnovadeApp
+        pwd
         nuget restore
         msbuild EnovadeApp/EnovadeApp/EnovadeApp/EnovadeApp.iOS/EnovadeApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug        
     - uses: actions/upload-artifact@v2
