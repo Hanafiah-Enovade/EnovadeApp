@@ -11,11 +11,11 @@ jobs:
         cd EnovadeApp
         pwd
         nuget restore
-        msbuild EnovadeApp/EnovadeApp/EnovadeApp/EnovadeApp.iOS/EnovadeApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug        
+        msbuild EnovadeApp.iOS/EnovadeApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug        
     - uses: actions/upload-artifact@v2
       with:
         name: iOS Simulator App
-        path: EnovadeApp/EnovadeApp/EnovadeApp/EnovadeApp.iOS/bin/iPhoneSimulator/Debug/EnovadeApp.iOS.app        
+        path: EnovadeApp.iOS/bin/iPhoneSimulator/Debug/EnovadeApp.iOS.app        
   Android:
     runs-on: macos-latest    
     steps:
