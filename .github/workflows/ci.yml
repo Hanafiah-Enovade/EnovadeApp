@@ -10,8 +10,21 @@ jobs:
       run: |
         cd EnovadeApp
         nuget restore
-        msbuild EnovadeApp/EnovadeApp/EnovadeApp.iOS/EnovadeApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug        
+        msbuild EnovadeApp/EnovadeApp.iOS/EnovadeApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug        
     - uses: actions/upload-artifact@v2
       with:
         name: iOS Simulator App
-        path: EnovadeApp/EnovadeApp/EnovadeApp.iOS/bin/iPhoneSimulator/Debug/EnovadeApp.iOS.app        
+        path: EnovadeApp/EnovadeApp.iOS/bin/iPhoneSimulator/Debug/EnovadeApp.iOS.app        
+  Android:
+    runs-on: macos-latest    
+    steps:
+    - uses: actions/checkout@v1      
+    - name: Android
+      run: |
+        cd EnovadeApp
+        nuget restore
+        msbuild EnovadeApp.Android/EnovadeApp.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Debug 
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Android App
+        path: EnovadeApp/EnovadeApp.Android/bin/Debug/com.tfp.EnovadeApp-Signed.apk 
